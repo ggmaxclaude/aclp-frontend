@@ -10,14 +10,14 @@ export default function Configurar() {
   const [erro, setErro] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleSalvar(e) {
+  async function handleSalvar(e: React.FormEvent) {
     e.preventDefault();
     setErro('');
     setLoading(true);
     try {
       await salvarApiKey(apiKey);
       router.push('/painel');
-    } catch (err) {
+    } catch (err: any) {
       setErro(err?.detail || 'Erro ao salvar.');
     } finally {
       setLoading(false);

@@ -7,11 +7,11 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 export default function Admin() {
   const [adminKey, setAdminKey] = useState('');
   const [logado, setLogado] = useState(false);
-  const [licencas, setLicencas] = useState([]);
+  const [licencas, setLicencas] = useState<any[]>([]);
   const [dias, setDias] = useState(7);
   const [erro, setErro] = useState('');
   const [loading, setLoading] = useState(false);
-  const [novaLicenca, setNovaLicenca] = useState(null);
+  const [novaLicenca, setNovaLicenca] = useState<any>(null);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -53,7 +53,7 @@ export default function Admin() {
     }
   }
 
-  function formatarData(data) {
+  function formatarData(data: string | null) {
     if (!data) return 'Nao ativada';
     return new Date(data).toLocaleDateString('pt-BR');
   }

@@ -7,7 +7,7 @@ import { logout, estaLogado, getPerfil } from '../../lib/api';
 export default function Painel() {
   const router = useRouter();
   const [copiado, setCopiado] = useState(false);
-  const [perfil, setPerfil] = useState(null);
+  const [perfil, setPerfil] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Painel() {
     setTimeout(() => setCopiado(false), 2000);
   }
 
-  function formatarData(data) {
+  function formatarData(data: string | null) {
     if (!data) return 'N/A';
     return new Date(data).toLocaleDateString('pt-BR');
   }

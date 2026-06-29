@@ -14,7 +14,7 @@ export default function Ativar() {
   const [loading, setLoading] = useState(false);
   const [novaConta, setNovaConta] = useState(false);
   
-  async function handleLogin(e) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setErro('');
     setLoading(true);
@@ -24,21 +24,21 @@ export default function Ativar() {
       }
       await login(email, senha);
       setEtapa('licenca');
-    } catch (err) {
+    } catch (err: any) {
       setErro(err?.detail || 'Erro ao autenticar.');
     } finally {
       setLoading(false);
     }
   }
 
-  async function handleAtivar(e) {
+  async function handleAtivar(e: React.FormEvent) {
     e.preventDefault();
     setErro('');
     setLoading(true);
     try {
       await ativarLicenca(chave);
       router.push('/configurar');
-    } catch (err) {
+    } catch (err: any) {
       setErro(err?.detail || 'Licenca invalida.');
     } finally {
       setLoading(false);
