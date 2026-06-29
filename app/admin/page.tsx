@@ -13,7 +13,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [novaLicenca, setNovaLicenca] = useState(null);
 
-  async function handleLogin(e) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setErro('');
     setLoading(true);
