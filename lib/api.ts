@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const API_URL = 'https://aclp-backend-production.up.railway.app';
 
 function getToken(): string | null {
   if (typeof window === 'undefined') return null;

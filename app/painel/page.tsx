@@ -63,13 +63,11 @@ export default function Painel() {
           <p className="text-gray-400 mb-4 text-sm">{perfil.email}</p>
         )}
 
-        {perfil && (
+        {perfil && perfil.licenca_ativa && (
           <div className="bg-purple-900 border border-purple-700 rounded-2xl p-5 mb-8 flex items-center justify-between">
             <div>
               <p className="text-purple-300 text-sm">Status da licenca</p>
-              <p className="text-white font-semibold text-lg">
-                {perfil.licenca_ativa ? 'Ativa' : 'Inativa'}
-              </p>
+              <p className="text-white font-semibold text-lg">Ativa</p>
             </div>
             <div className="text-right">
               <p className="text-purple-300 text-sm">Expira em</p>
@@ -79,6 +77,21 @@ export default function Painel() {
               <p className="text-purple-300 text-sm">Plano</p>
               <p className="text-white font-semibold text-lg">{perfil.dias_duracao} dias</p>
             </div>
+          </div>
+        )}
+
+        {perfil && !perfil.licenca_ativa && (
+          <div className="bg-red-950 border border-red-700 rounded-2xl p-6 mb-8">
+            <h2 className="text-xl font-bold text-red-300 mb-2">Sua licenca expirou</h2>
+            <p className="text-red-200 text-sm mb-4">
+              Para continuar usando o Claude Code, renove sua licenca na GGMAX e ative uma nova chave.
+            </p>
+            <button
+              onClick={() => router.push('/ativar')}
+              className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-semibold transition"
+            >
+              Ativar nova licenca
+            </button>
           </div>
         )}
 
